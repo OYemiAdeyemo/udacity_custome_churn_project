@@ -1,4 +1,11 @@
 # library doc string
+
+"""
+This file contains the functions for Predicting customer Churn notebook
+author: Opeyemi Adeyemo
+Date: Jun. 20th 2025
+"""
+
 """
 Churn Library
 
@@ -7,6 +14,7 @@ train models, and visualize results for churn prediction tasks.
 """
 
 # import libraries
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -19,7 +27,6 @@ from sklearn.metrics import classification_report, RocCurveDisplay
 import shap
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-
 os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 
 
@@ -105,7 +112,6 @@ def perform_feature_engineering(df, response='Churn'):
         X, y, test_size=0.3, random_state=42)
 
     return X_train, X_test, y_train, y_test
-
 
 
 def classification_report_image(y_train,
@@ -215,8 +221,20 @@ def train_models(X_train, X_test, y_train, y_test):
     # ROC Curve
     plt.figure(figsize=(15, 8))
     ax = plt.gca()
-    RocCurveDisplay.from_estimator(rf_model, X_test, y_test, ax=ax, alpha=0.8, name="Random Forest")
-    RocCurveDisplay.from_estimator(lr_pipeline, X_test, y_test, ax=ax, alpha=0.8, name="Logistic Regression")
+    RocCurveDisplay.from_estimator(
+        rf_model,
+        X_test,
+        y_test,
+        ax=ax,
+        alpha=0.8,
+        name="Random Forest")
+    RocCurveDisplay.from_estimator(
+        lr_pipeline,
+        X_test,
+        y_test,
+        ax=ax,
+        alpha=0.8,
+        name="Logistic Regression")
     plt.title("ROC Curves")
     plt.savefig('./images/results/roc_curve.png')
     plt.close()

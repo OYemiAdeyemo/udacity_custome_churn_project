@@ -1,5 +1,11 @@
 # test_churn_library.py
 
+"""
+This file contains the unit test for churn_library.py module used for Predicting customer Churn notebook
+author: Opeyemi Adeyemo
+Date: Jun. 20th 2025
+"""
+
 import os
 import logging
 from sklearn.model_selection import train_test_split
